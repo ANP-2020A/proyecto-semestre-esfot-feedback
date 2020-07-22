@@ -16,7 +16,7 @@ class AnswersTableSeeder extends Seeder
         Answer::truncate();
         $faker = \Faker\Factory::create();
         // Crear artículos ficticios en la tabla
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             Answer::create([
                 'Fk_idQuestion' =>  $faker->numberBetween(1,5),
                 'FK_idUser' => $faker->uuid,
