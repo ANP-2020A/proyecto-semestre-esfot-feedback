@@ -18,25 +18,8 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::get('subjects', function() {
-    return Subject::all();
-});
-
-Route::get('subjects/{id}', function($id) {
-    return Subject::find($id);
-});
-
-Route::post('subjects', function(Request $request) {
-    return Subject::create($request->all());
-});
-
-Route::put('subjects/{id}', function(Request $request, $id) {
-    $article = Subject::findOrFail($id);
-    $article->update($request->all());
-    return $article;
-});
-
-Route::delete('subjects/{id}', function($id) {
-    Subject::find($id)->delete();
-    return 204;
-});
+Route::get('subjects', 'SubjectController@index');
+Route::get('subjects/{subject}', 'SubjectController@show');
+Route::post('subjects', 'SubjectController@store');
+Route::put('subjects/{subject}', 'SubjectController@update');
+Route::delete('subjects/{subject}', 'SubjectController@delete');
