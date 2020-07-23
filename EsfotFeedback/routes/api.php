@@ -30,3 +30,8 @@ Route::get('answers/{answer}', 'AnswerController@show');
 Route::post('answers', 'AnswerController@store');
 Route::delete('answers/{answer}', 'AnswerController@delete');
 
+Route::get('chapters', 'ChapterController@index');
+Route::get('chapters/{chapter}', 'ChapterController@show');
+Route::post('chapters', 'ChapterController@store');
+Route::delete('chapters/{chapter}', 'AnswerController@delete');
+
