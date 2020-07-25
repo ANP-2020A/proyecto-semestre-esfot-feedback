@@ -14,19 +14,25 @@ use Illuminate\Http\Request;
 |
 */
 
-
+//Subjects
 Route::get('subjects', 'SubjectController@index');
 Route::get('subjects/{subject}', 'SubjectController@show');
 Route::post('subjects', 'SubjectController@store');
 Route::put('subjects/{subject}', 'SubjectController@update');
 Route::delete('subjects/{subject}', 'SubjectController@delete');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+//Answers
 Route::get('answers', 'AnswerController@index');
 Route::get('answers/{answer}', 'AnswerController@show');
 Route::post('answers', 'AnswerController@store');
 Route::delete('answers/{answer}', 'AnswerController@delete');
+
+//Questions
+Route::get('questions', 'QuestionController@index');
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
 
