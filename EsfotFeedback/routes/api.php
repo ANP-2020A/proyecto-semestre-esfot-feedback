@@ -27,12 +27,3 @@ Route::get('answers/{answer}', 'AnswerController@show');
 Route::post('answers', 'AnswerController@store');
 Route::delete('answers/{answer}', 'AnswerController@delete');
 
-//Questions
-Route::get('questions', 'QuestionController@index');
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-
