@@ -12,15 +12,20 @@ class ChapterTableSeeder extends Seeder
      */
     public function run()
     {
+        // Vaciamos la tabla comments
         Chapters::truncate();
-
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 50; $i++)
-        {
-            Chapters::create([
-                'Topic' => $faker->word,
-                'Objetives' => $faker->paragraph,
+        // Obtenemos todos los artículos de la bdd
+        $subjects = App\Subject::all();
+
+        foreach ($subjects as $subjects) {
+            for($j=0; $j<5; $j++){
+                Chapters::create([
+                    'Topic' => $faker->word,
+                    'Objetives' => $faker->paragraph,
+                    'FK_idSubject' => $subjects->id,
                 ]);
+            }
         }
     }
 }
