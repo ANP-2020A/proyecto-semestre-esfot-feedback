@@ -34,4 +34,3 @@ Route::get('chapters', 'ChapterController@index');
 Route::get('chapters/{chapter}', 'ChapterController@show');
 Route::post('chapters', 'ChapterController@store');
 Route::delete('chapters/{chapter}', 'AnswerController@delete');
-
