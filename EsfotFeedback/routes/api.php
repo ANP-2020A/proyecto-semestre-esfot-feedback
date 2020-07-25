@@ -29,4 +29,3 @@ Route::get('answers', 'AnswerController@index');
 Route::get('answers/{answer}', 'AnswerController@show');
 Route::post('answers', 'AnswerController@store');
 Route::delete('answers/{answer}', 'AnswerController@delete');
-
