@@ -12,17 +12,25 @@ class AnswersTableSeeder extends Seeder
      */
     public function run()
     {
-        // Vaciar la tabla.
+
+        // Vaciamos la tabla answers
         Answer::truncate();
         $faker = \Faker\Factory::create();
-        // Crear artículos ficticios en la tabla
-        for ($i = 0; $i < 25; $i++) {
-            Answer::create([
-                'Fk_idQuestion' =>  $faker->numberBetween(1,5),
-                'FK_idUser' => $faker->uuid,
-                'FK_idChapter' => $faker->uuid,
-                'Value' => $faker->numberBetween(1,5)
-            ]);
+        // Obtenemos todos los question de la bdd
+        $question = App\Question::all();
+        // Obtenemos todos los chapters de la bdd
+        $chapter = App\Chapters::all();
+        foreach($chapter as $chapters){
+            foreach ($question as $questions) {
+                for($j=0; $j<2; $j++){
+                    Answer::create([
+                        'FK_idUser' => $faker->uuid,
+                        'FK_idChapter' => $chapters->id,
+                        'FK_idQuestion' => $questions->id,
+                        'Value' => $faker->numberBetween(1,5)
+                    ]);
+                }
+            }
         }
     }
 }
