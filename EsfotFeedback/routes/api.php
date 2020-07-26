@@ -14,20 +14,32 @@ use Illuminate\Http\Request;
 |
 */
 
+
+
+Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@authenticate');
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('user', 'UserController@getAuthenticatedUser');
+
 //Subjects
-Route::get('subjects', 'SubjectController@index');
-Route::get('subjects/{subject}', 'SubjectController@show');
-Route::post('subjects', 'SubjectController@store');
-Route::put('subjects/{subject}', 'SubjectController@update');
-Route::delete('subjects/{subject}', 'SubjectController@delete');
+    Route::get('subjects', 'SubjectController@index');
+    Route::get('subjects/{subject}', 'SubjectController@show');
+    Route::post('subjects', 'SubjectController@store');
+    Route::put('subjects/{subject}', 'SubjectController@update');
+    Route::delete('subjects/{subject}', 'SubjectController@delete');
 
 //Answers
-Route::get('answers', 'AnswerController@index');
-Route::get('answers/{answer}', 'AnswerController@show');
-Route::post('answers', 'AnswerController@store');
-Route::delete('answers/{answer}', 'AnswerController@delete');
+    Route::get('answers', 'AnswerController@index');
+    Route::get('answers/{answer}', 'AnswerController@show');
+    Route::post('answers', 'AnswerController@store');
+    Route::delete('answers/{answer}', 'AnswerController@delete');
 
-Route::get('chapters', 'ChapterController@index');
-Route::get('chapters/{chapter}', 'ChapterController@show');
-Route::post('chapters', 'ChapterController@store');
-Route::delete('chapters/{chapter}', 'AnswerController@delete');
+//Chapters
+    Route::get('chapters', 'ChapterController@index');
+    Route::get('chapters/{chapter}', 'ChapterController@show');
+    Route::post('chapters', 'ChapterController@store');
+    Route::delete('chapters/{chapter}', 'AnswerController@delete');
+
+
+});
