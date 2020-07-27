@@ -21,6 +21,7 @@ class Subjects_UsersTableSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             Subject_User::create([
 
+
                 'subject_id' =>($i),
                 'user_id' =>($i),
             ]);

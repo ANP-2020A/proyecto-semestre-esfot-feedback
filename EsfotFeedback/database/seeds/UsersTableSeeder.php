@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Administrador',
             'email' => 'admin@prueba.com',
             'password' => $password,
+
         ]);
         // Generar algunos usuarios para nuestra aplicacion
         for ($i = 0; $i < 15; $i++) {
