@@ -3,6 +3,7 @@
 use App\Subject;
 use Illuminate\Database\Seeder;
 
+
 class SubjectTableSeeder extends Seeder
 {
     /**
