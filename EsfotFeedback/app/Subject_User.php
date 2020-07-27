@@ -14,7 +14,8 @@ class Subject_User extends Model
     public function user() {
         return $this->belongsTo('App\User'); }
     public function subject() {
-        return $this->belongsTo('App\Subject'); }
+        return $this->belongsTo('App\Subject');
+    }
    /* public static function boot() {
         parent::boot();
 

@@ -22,6 +22,7 @@ class CreateAnswersTable extends Migration
             $table->foreign('FK_idChapter')->references('id')->on('chapters')->onDelete('restrict');
             $table->string('Value');
             $table->timestamps();
+
         });
     }
 

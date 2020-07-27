@@ -34,6 +34,7 @@ class AnswersTableSeeder extends Seeder
                     $num_answere = 5;
                     for ($j = 0; $j < $num_answere; $j++) {
                         Answer::create([
+
                             'FK_idUser' => $faker->uuid,
                             'FK_idChapter' => $chapters->id,
                             'FK_idQuestion' => $questions->id,
@@ -65,6 +66,6 @@ class AnswersTableSeeder extends Seeder
                     ]);
                 }
             }*/
-        }
     }
+}
 

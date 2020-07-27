@@ -15,6 +15,7 @@ class Subject extends Model
     }
     public function subjecjs_users() {
         return $this->hasMany('App\Subject_Users');
+
     }
 
 }
