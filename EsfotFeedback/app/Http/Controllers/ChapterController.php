@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Chapters;
+use App\Http\Resources\Chapter;
+use App\Http\Resources\Chapter as ChapterResource;
+use App\Http\Resources\ChapterCollection;
 use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
     public function index()
     {
-        return Chapters::all();
+        return new ChapterCollection(Chapters::paginate(25));
     }
     public function show(Chapters $chapter)
     {
-        return $chapter;
+        return response()->json(new ChapterResource($chapter),200);
     }
     public function store(Request $request)
     {
