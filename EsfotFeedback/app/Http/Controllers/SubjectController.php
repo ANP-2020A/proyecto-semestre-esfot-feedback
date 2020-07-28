@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
+use App\Http\Resources\Subject as SubjectResource;
+use App\Http\Resources\SubjectCollection;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
     public function index()
     {
-        return Subject::all();
+        return new SubjectCollection(Subject::paginate(25));
     }
 
     public function show(Subject $subject)
     {
-        return $subject;
+        return response()->json(new SubjectResource($subject),200);
     }
 
     public function store(Request $request)
