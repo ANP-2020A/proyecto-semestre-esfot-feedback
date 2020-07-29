@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+
 use App\Chapters;
 use App\Http\Resources\Chapter;
 use App\Http\Resources\Chapter as ChapterResource;
@@ -21,10 +21,10 @@ class ChapterController extends Controller
     }
     public function store(Request $request)
     {
-        $chapter = Answer::create($request->all());
+        $chapter = Chapter::create($request->all());
         return response()->json($chapter, 201);
     }
-    public function delete(Answer $chapter)
+    public function delete(Chapter $chapter)
     {
         $chapter->delete();
         return response()->json(null, 204);
