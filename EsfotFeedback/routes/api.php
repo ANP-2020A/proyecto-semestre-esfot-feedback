@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Subject;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,13 @@ use Illuminate\Http\Request;
 
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
+
+
+//SubjectUsers
+Route::get('subject_Users', 'SubjectUserController@index');
+Route::get('subject_Users/{subject_Users}', 'SubjectUserController@show');
+Route::post('subject_Users', 'SubjectUserController@store');
+Route::delete('subject_Users/{subject_Users}', 'SubjectUserController@delete');
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
@@ -41,10 +49,12 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('chapters', 'ChapterController@store');
     Route::delete('chapters/{chapter}', 'ChapterController@delete');
 
-//Chapters
+//Questions
     Route::get('questions', 'QuestionController@index');
     Route::get('questions/{question}', 'QuestionController@show');
     Route::post('questions', 'QuestionController@store');
     Route::delete('questions/{question}', 'QuestionController@delete');
+
+
 
 });
