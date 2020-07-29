@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use App\Http\Resources\Question as QuestionResource;
+use App\Http\Resources\QuestionCollection;
 use Illuminate\Http\Request;
 
 
@@ -14,11 +15,11 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        return QuestionResource::collection(Question::all());
+        return new QuestionCollection(Question::paginate(25));
     }
     public function show(Question $question)
     {
-        return new QuestionResource($question);
+        return response()->json(new QuestionResource($question),200);
     }
     public function store(Request $request)
     {

@@ -18,7 +18,9 @@ class AnswerCollection extends ResourceCollection
             'data' => $this->collection,
             'links' => [
                 'self' => 'link-value',
+
             ],
         ];
+
     }
 }
