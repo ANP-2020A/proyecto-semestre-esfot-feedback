@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Answer;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\answer as AsnwerResource;
+use App\Http\Resources\answer as AnswerResource;
 
 class AnswerController extends Controller
 {
     public function index()
     {
-        return AsnwerResource::collection(Answer::all());
+        return AnswerResource::collection(Answer::all());
     }
     public function show(Answer $answer)
     {
-        return new AsnwerResource($answer);
+        return new AnswerResource($answer);
     }
     public function store(Request $request)
     {

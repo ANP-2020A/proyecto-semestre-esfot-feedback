@@ -25,7 +25,6 @@ class AnswersTableSeeder extends Seeder
             $question = App\Question::all();
             // Obtenemos todos los chapters de la bdd
             $chapter = App\Chapters::all();
-                     // Y ahora con este usuario creamos algunos articulos
             $subject_user= App\Subject_User::all();
 
             foreach($subject_user as $subject_user){
