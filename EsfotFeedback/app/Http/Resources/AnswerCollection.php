@@ -19,6 +19,7 @@ class AnswerCollection extends ResourceCollection
             'links' => [
                 'self' => 'link-value',
 
+
             ],
         ];
 

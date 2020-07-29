@@ -6,13 +6,16 @@ use App\Answer;
 
 use Illuminate\Http\Request;
 
+
 use App\Http\Resources\Answer as AsnwerResource;
 use App\Http\Resources\AnswerCollection;
+
 
 class AnswerController extends Controller
 {
     public function index()
     {
+
 
         return new AnswerCollection(Answer::paginate(25));
     }
