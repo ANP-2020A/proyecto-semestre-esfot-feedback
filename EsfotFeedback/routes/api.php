@@ -39,7 +39,12 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('chapters', 'ChapterController@index');
     Route::get('chapters/{chapter}', 'ChapterController@show');
     Route::post('chapters', 'ChapterController@store');
-    Route::delete('chapters/{chapter}', 'AnswerController@delete');
+    Route::delete('chapters/{chapter}', 'ChapterController@delete');
 
+//Chapters
+    Route::get('questions', 'QuestionController@index');
+    Route::get('questions/{question}', 'QuestionController@show');
+    Route::post('questions', 'QuestionController@store');
+    Route::delete('questions/{question}', 'QuestionController@delete');
 
 });
