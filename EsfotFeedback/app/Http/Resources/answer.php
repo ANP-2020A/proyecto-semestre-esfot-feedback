@@ -16,10 +16,10 @@ class answer extends JsonResource
     {
         return [
             'id' => $this->id,
-            'FK_idUser' => $this->FK_idUser,
-            'FK_idChapter' => $this->FK_idChapter,
-            'FK_idQuestion' => $this->FK_idQuestion,
-            'user_subject_id' => $this->user_subject_id,
+            'User' => "/api/users/" . $this->FK_idUser,
+            'Chater' => "/api/chaters/" . $this->FK_idChapter,
+            'Question' => "/api/questions/" . $this->FK_idQuestion,
+            'Subject_User' => "/api/user_subjects/" . $this->user_subject_id,
             'Value' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
