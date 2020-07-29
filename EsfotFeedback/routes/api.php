@@ -50,9 +50,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::delete('questions/{question}', 'QuestionController@delete');
 
     //SubjectUsers
+
 Route::get('subject_Users', 'SubjectUserController@index');
 Route::get('subject_Users/{subject_Users}', 'SubjectUserController@show');
 Route::post('subject_Users', 'SubjectUserController@store');
 Route::delete('subject_Users/{subject_Users}', 'SubjectUserController@delete');
+
 
 });
