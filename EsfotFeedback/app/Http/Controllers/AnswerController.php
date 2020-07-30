@@ -27,11 +27,12 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $answer = Answer::create($request->all());
+        $this->authorize('create', $answer);
         return response()->json($answer, 201);
     }
     public function delete(Answer $answer)
     {
-
+        $this->authorize('delete', $answer);
         $answer->delete();
         return response()->json(null, 204);
     }
