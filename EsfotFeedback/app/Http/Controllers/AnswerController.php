@@ -15,12 +15,12 @@ class AnswerController extends Controller
 {
     public function index()
     {
-
-
+        $this->authorize('viewAny', Answer::class);
         return new AnswerCollection(Answer::paginate(25));
     }
     public function show(Answer $answer)
     {
+        $this->authorize('view', $answer);
         return response()->json(new AsnwerResource($answer),200);
 
     }
