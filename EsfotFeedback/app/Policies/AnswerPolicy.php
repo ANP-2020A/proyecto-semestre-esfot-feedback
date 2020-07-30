@@ -38,7 +38,8 @@ class AnswerPolicy
     public function view(User $user, Answer $answer)
     {
         return $user->isGranted(User::ROLE_STUDENT)||
-            $user->isGranted(User::ROLE_TEACHER);
+            ($user->isGranted(User::ROLE_TEACHER) &&
+            $user->id === $answer->user_subject_id);
     }
 
     /**
@@ -61,7 +62,7 @@ class AnswerPolicy
      */
     public function update(User $user, Answer $answer)
     {
-        //
+        return false;
     }
 
     /**
@@ -73,7 +74,7 @@ class AnswerPolicy
      */
     public function delete(User $user, Answer $answer)
     {
-        return $user->isGranted(User::ROLE_ADMIN);
+        return false;
     }
 
     /**
