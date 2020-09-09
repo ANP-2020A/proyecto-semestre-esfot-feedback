@@ -20,13 +20,7 @@ class Answer extends JsonResource
             'User' => "/api/user/" . $this->FK_idUser,
             'Chapter' => "/api/chapter/" . $this->FK_idChapter,
             'Question' => "/api/question/" . $this->FK_idQuestion,
-            'Subjesct_User' => "/api/subjesct_User/" . $this->user_subject_id,
-
-            'User' => "/api/users/" . $this->FK_idUser,
-            'Chater' => "/api/chaters/" . $this->FK_idChapter,
-            'Question' => "/api/questions/" . $this->FK_idQuestion,
-            'Subject_User' => "/api/subejct_Users/" . $this->user_subject_id,
-
+            'Subjesct_User' => "/api/subject_Users/" . $this->user_subject_id,
             'Value' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
