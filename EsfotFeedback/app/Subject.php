@@ -13,8 +13,8 @@ class Subject extends Model
     {
         return $this->hasMany('App\Chapters','FK_idSubject','id');
     }
-    public function subjecjs_users() {
-        return $this->hasMany('App\Subject_Users');
+    public function subjects_users() {
+        return $this->belongsToMany('App\User')->using('App\SubjectUser');
 
     }
 

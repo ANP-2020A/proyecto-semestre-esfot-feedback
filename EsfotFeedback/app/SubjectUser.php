@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Facades\Auth;
 
-class Subject_User extends Model
+class SubjectUser extends Pivot
 {
 
+    public $incrementing = true;
     protected $fillable = ['subject_id','user_id'];
     public function answers() {
         return $this->hasMany('App\Answer'); }

@@ -13,7 +13,7 @@ class CreateSubjectUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('subject__users', function (Blueprint $table) {
+        Schema::create('subject_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('restrict');
@@ -30,7 +30,7 @@ class CreateSubjectUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('subject__users', function (Blueprint $table) {
+        Schema::table('subject_user', function (Blueprint $table) {
             $table->dropForeign(['subject_id']);
         });
     }
