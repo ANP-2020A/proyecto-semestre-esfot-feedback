@@ -51,10 +51,10 @@ Route::group(['middleware' => ['cors']], function () { // <=== Añadir el middle
 
         //SubjectUsers
 
-        Route::get('subject_Users', 'SubjectUserController@index');
-        Route::get('subject_Users/{subject_Users}', 'SubjectUserController@show');
-        Route::post('subject_Users', 'SubjectUserController@store');
-        Route::delete('subject_Users/{subject_Users}', 'SubjectUserController@delete');
+        Route::get('users/subjects', 'SubjectController@subjectByUser');
+       // Route::get('subject_Users/{subject_Users}', 'SubjectUserController@show');
+      //  Route::post('subject_Users', 'SubjectUserController@store');
+      //  Route::delete('subject_Users/{subject_Users}', 'SubjectUserController@delete');
 
 
     });

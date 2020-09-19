@@ -13,7 +13,7 @@ class Subject extends Model
     {
         return $this->hasMany('App\Chapters','FK_idSubject','id');
     }
-    public function subjects_users() {
+    public function students() {
         return $this->belongsToMany('App\User')->using('App\SubjectUser');
 
     }
