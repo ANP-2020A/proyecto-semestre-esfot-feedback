@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Chapters;
+use App\Http\Resources\Answer;
 use App\Http\Resources\Chapter;
 use App\Http\Resources\Chapter as ChapterResource;
 use App\Http\Resources\ChapterCollection;
@@ -28,11 +29,38 @@ class ChapterController extends Controller
         $chapter = Chapter::create($request->all());
         return response()->json($chapter, 201);
     }
-    public function update(Request $request, Chapters $chapter)
+
+    public function storeAnswers(Request $request, Chapter $chapter)
     {
-        $this->authorize('update', $chapter);
-        $chapter->update($request->all());
-        return response()->json($chapter, 200);
+        // validation
+
+        /*
+         [
+            [
+                question_id => 1,
+                value=>4
+                chapter_id=>4
+            ],
+        [
+                question_id => 1,
+                value=>4
+                chapter_id=>4
+            ],
+        [
+                question_id => 1,
+                value=>4
+                chapter_id=>4
+            ]
+        ]
+         */
+        $answers = [];
+        foreach($request->all() as $answer) {
+            $answers[] = new Answer($answer);
+        }
+        $chapter->answers()->saveMany($answers);
+
+        return response()->json($chapter, 201);
+
     }
     public function delete(Chapter $chapter)
     {
