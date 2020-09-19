@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SubjectCollection;
 use App\Subject;
 use App\Http\Resources\Subject as SubjectResource;
 use App\Http\Resources\SubjectUserCollection;
@@ -16,6 +17,11 @@ class SubjectController extends Controller
 
 
         return new SubjectUserCollection( Auth::user()->subjects());
+    }
+
+    public function subjectByUser()
+    {
+        return new SubjectCollection(Auth::user()->subjects);
     }
 
     public function show(Subject $subject)
