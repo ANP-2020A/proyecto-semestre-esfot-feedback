@@ -1,10 +1,10 @@
 <?php
 
-use App\Subject_User;
+use App\SubjectUser;
 use Illuminate\Database\Seeder;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class Subjects_UsersTableSeeder extends Seeder
+class SubjectsUsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,12 @@ class Subjects_UsersTableSeeder extends Seeder
     public function run()
     {
         // Vaciamos la tabla comments
-             Subject_User::truncate();
+             SubjectUser::truncate();
         $faker = \Faker\Factory::create();
 
 
         for ($i = 0; $i < 50; $i++) {
-            Subject_User::create([
+            SubjectUser::create([
                 'subject_id' =>($i),
                 'user_id' =>($i),
             ]);

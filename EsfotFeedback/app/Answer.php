@@ -22,7 +22,7 @@ class Answer extends Model
     }
 
     public function Subject_answer() {
-        return $this->belongsTo('App\Subject_User'); }
+        return $this->belongsTo('App\SubjectUser'); }
    /* public static function boot() {
         parent::boot();
 

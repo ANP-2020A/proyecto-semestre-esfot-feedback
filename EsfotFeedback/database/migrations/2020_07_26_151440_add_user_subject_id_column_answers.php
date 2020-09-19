@@ -15,7 +15,7 @@ class AddUserSubjectIdColumnAnswers extends Migration
     {
         Schema::table('answers', function (Blueprint $table) {
             $table->unsignedBigInteger('user_subject_id');
-            $table->foreign('user_subject_id')->references('id')->on('subject__users')->onDelete('restrict');
+            $table->foreign('user_subject_id')->references('id')->on('subject_user')->onDelete('restrict');
         });
     }
 

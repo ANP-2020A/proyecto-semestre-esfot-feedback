@@ -63,8 +63,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function subjecjs_users() {
-        return $this->hasMany('App\Subject_Users'); }
+    public function subjects() {
+        return $this->belongsToMany('App\Subject')->using('App\SubjectUser');
+    }
 
 
 //    public function isGranted($role)
