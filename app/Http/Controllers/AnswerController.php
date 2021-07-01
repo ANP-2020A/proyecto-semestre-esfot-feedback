@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Resources\Answer as AsnwerResource;
 use App\Http\Resources\AnswerCollection;
+use App\Http\Resources\Chapter;
+use App\Http\Resources\ChapterCollection;
+use Illuminate\Support\Facades\Auth;
 
 
 class AnswerController extends Controller
@@ -21,9 +24,33 @@ class AnswerController extends Controller
     public function show(Answer $answer)
     {
         $this->authorize('view', $answer);
-        return response()->json(new AsnwerResource($answer),200);
-
+        return response()->json(new AsnwerResource($answer), 200);
     }
+
+    public function AnswersByStudent(Answer $answer)
+    {
+
+        $user = Auth::user();
+        $subjects = $user->subjects;
+        $result = [];
+        foreach ($subjects as $subject) { // foreach
+            $chapters = $subject->chapters;
+            $tmpSubject = $subject;
+            //dd($user);
+            foreach ($chapters as $chapter) {
+                $answers = $chapter->answers->where('FK_idUser', 1);
+
+                $chapter["answers"] = $answers;
+                //$tmpChapter = $chapter;
+                //$tmpChapter["answers"] = $answers;
+                $tmpSubject["chapters"][] = $answers;
+            }
+            //dd($tmpSubject);
+            $result[] = $tmpSubject;
+        }
+        return response()->json($result);
+    }
+
     public function store(Request $request)
     {
         $answer = Answer::create($request->all());
@@ -37,4 +64,3 @@ class AnswerController extends Controller
         return response()->json(null, 204);
     }
 }
-

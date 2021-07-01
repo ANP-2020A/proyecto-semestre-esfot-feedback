@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Answer;
 use App\Chapters;
 use App\Question;
@@ -25,38 +26,38 @@ class AnswersTableSeeder extends Seeder
         // Obtenemos todos los question de la bdd
         $users = User::all();
         foreach ($users as $user) {         // iniciamos sesión con este usuario
-                     JWTAuth::attempt(['email' => $user->email, 'password' => '123123']);
+            JWTAuth::attempt(['email' => $user->email, 'password' => '123123']);
 
             $question = Question::all();
             // Obtenemos todos los chapters de la bdd
             $chapter = Chapters::all();
-            $subject_users= SubjectUser::all();
+            $subject_users = SubjectUser::all();
 
-            foreach($subject_users as $subject_user){
-            foreach($chapter as $chapters){
-                foreach ($question as $questions) {
-                    $num_answere = 5;
-                    for ($j = 0; $j < $num_answere; $j++) {
-                        Answer::create([
+            foreach ($subject_users as $subject_user) {
+                foreach ($chapter as $chapters) {
+                    foreach ($question as $questions) {
+                        $num_answere = 5;
+                        for ($j = 0; $j < $num_answere; $j++) {
+                            Answer::create([
 
-                            'FK_idUser' => $faker->uuid,
-                            'FK_idChapter' => $chapters->id,
-                            'FK_idQuestion' => $questions->id,
-                            'user_subject_id' => $subject_user->id,
-                            'Value' => $faker->numberBetween(1,5)
+                                'FK_idUser' => $faker->numberBetween(1, 16),
+                                'FK_idChapter' => $chapters->id,
+                                'FK_idQuestion' => $questions->id,
+                                'user_subject_id' => $subject_user->id,
+                                'Value' => $faker->numberBetween(1, 5)
 
 
-                        ]);
+                            ]);
+                        }
                     }
                 }
             }
         }
-        }
 
 
 
 
-       /* $question = App\Question::all();
+        /* $question = App\Question::all();
         // Obtenemos todos los chapters de la bdd
         $chapter = App\Chapters::all();
         foreach($chapter as $chapters){
@@ -72,4 +73,3 @@ class AnswersTableSeeder extends Seeder
             }*/
     }
 }
-

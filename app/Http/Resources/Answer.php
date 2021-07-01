@@ -21,9 +21,9 @@ class Answer extends JsonResource
             'Chapter' => "/api/chapter/" . $this->FK_idChapter,
             'Question' => "/api/question/" . $this->FK_idQuestion,
             'Subjesct_User' => "/api/subject_Users/" . $this->user_subject_id,
-            'Value' => $this->email,
+            'Value' => $this->Value,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            ];
+        ];
     }
 }

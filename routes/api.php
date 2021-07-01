@@ -38,7 +38,7 @@ Route::group(['middleware' => ['cors']], function () { // <=== Añadir el middle
                 Route::delete('subjects/{subject}', [SubjectController::class, 'delete']);
 
                 //Answers
-                Route::get('answers', [AnswerController::class, 'index']);
+                Route::get('answers', [AnswerController::class, 'AnswersByStudent']);
                 Route::get('answers/{answer}', [AnswerController::class, 'show']);
                 Route::post('answers', [AnswerController::class, 'store']);
                 Route::delete('answers/{answer}', [AnswerController::class, 'delete']);
