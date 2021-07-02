@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 
+use App\SubjectUser;
 use Illuminate\Http\Request;
 
 
@@ -27,28 +28,17 @@ class AnswerController extends Controller
         return response()->json(new AsnwerResource($answer), 200);
     }
 
-    public function AnswersByStudent(Answer $answer)
+    public function AnswersByStudent()
     {
-
         $user = Auth::user();
         $subjects = $user->subjects;
-        $result = [];
         foreach ($subjects as $subject) { // foreach
-            $chapters = $subject->chapters;
-            $tmpSubject = $subject;
-            //dd($user);
-            foreach ($chapters as $chapter) {
-                $answers = $chapter->answers->where('FK_idUser', 1);
-
-                $chapter["answers"] = $answers;
-                //$tmpChapter = $chapter;
-                //$tmpChapter["answers"] = $answers;
-                $tmpSubject["chapters"][] = $answers;
+            foreach ($subject->chapters as $chapter) {
+                // todo el atributo fk_user_id noo debe existir en anwers xq lo podemos obtener mediante la pivot table
+                $chapter->answers = $chapter->answers()->where('subject_user_id', $subject->pivot->id)->get();
             }
-            //dd($tmpSubject);
-            $result[] = $tmpSubject;
         }
-        return response()->json($result);
+        return response()->json($subjects);
     }
 
     public function store(Request $request)

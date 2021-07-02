@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserSubjectIdColumnAnswers extends Migration
+class AddSubjectUserIdColumnAnswers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddUserSubjectIdColumnAnswers extends Migration
     public function up()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_subject_id');
-            $table->foreign('user_subject_id')->references('id')->on('subject_user')->onDelete('restrict');
+            $table->unsignedBigInteger('subject_user_id');
+            $table->foreign('subject_user_id')->references('id')->on('subject_user')->onDelete('restrict');
         });
     }
 
@@ -27,6 +27,6 @@ class AddUserSubjectIdColumnAnswers extends Migration
     public function down()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->dropForeign(['user_subject_id']);     });
+            $table->dropForeign(['subject_user_id']);     });
     }
 }

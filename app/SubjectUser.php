@@ -11,10 +11,15 @@ class SubjectUser extends Pivot
 
     public $incrementing = true;
     protected $fillable = ['subject_id','user_id'];
+
     public function answers() {
-        return $this->hasMany('App\Answer'); }
+        return $this->hasMany('App\Answer', 'subject_user_id', 'id');
+    }
+
     public function user() {
-        return $this->belongsTo('App\User'); }
+        return $this->belongsTo('App\User');
+    }
+
     public function subject() {
         return $this->belongsTo('App\Subject');
     }
