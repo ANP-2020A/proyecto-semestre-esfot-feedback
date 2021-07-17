@@ -20,12 +20,12 @@ class ChapterTableSeeder extends Seeder
         // Obtenemos todos los artículos de la bdd
         $subjects = Subject::all();
 
-        foreach ($subjects as $subjects) {
+        foreach ($subjects as $subject) {
             for($j=0; $j<5; $j++){
                 Chapters::create([
                     'Topic' => $faker->word,
                     'Objetives' => $faker->paragraph,
-                    'FK_idSubject' => $subjects->id,
+                    'FK_idSubject' => $subject->id,
                 ]);
             }
         }

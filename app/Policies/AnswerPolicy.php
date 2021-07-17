@@ -37,9 +37,9 @@ class AnswerPolicy
      */
     public function view(User $user, Answer $answer)
     {
-        return $user->isGranted(User::ROLE_STUDENT)||
+        return $user->isGranted(User::ROLE_STUDENT) ||
             ($user->isGranted(User::ROLE_TEACHER) &&
-            $user->id === $answer->user_subject_id);
+                $user->id === $answer->user_subject_id);
     }
 
     /**

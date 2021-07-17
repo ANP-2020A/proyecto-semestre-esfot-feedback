@@ -21,8 +21,8 @@ class Answer extends Model
         return $this->belongsTo('App\Question','FK_idQuestion','id');
     }
 
-    public function Subject_answer() {
-        return $this->belongsTo('App\SubjectUser'); }
+    public function subjectUser() {
+        return $this->belongsTo('App\SubjectUser', 'subject_user_id', 'id'); }
    /* public static function boot() {
         parent::boot();
 

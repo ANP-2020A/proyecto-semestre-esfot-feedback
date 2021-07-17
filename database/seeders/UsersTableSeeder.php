@@ -29,12 +29,29 @@ class UsersTableSeeder extends Seeder
             'password' => $password,
 
         ]);
+
+        User::create([
+            'name' => 'Estudiante',
+            'email' => 'estudiante@prueba.com',
+            'password' => $password,
+
+        ]);
         // Generar algunos usuarios para nuestra aplicacion
         for ($i = 0; $i < 15; $i++) {
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $password,
+                'role' => 'ROLE_STUDENT'
+            ]);
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => $password,
+                'role' => 'ROLE_TEACHER'
             ]);
         }
     }

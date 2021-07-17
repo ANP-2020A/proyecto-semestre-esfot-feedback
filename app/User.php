@@ -63,8 +63,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
     public function subjects() {
-        return $this->belongsToMany('App\Subject')->using('App\SubjectUser');
+        return $this->belongsToMany('App\Subject')->withPivot('id');
     }
 
 

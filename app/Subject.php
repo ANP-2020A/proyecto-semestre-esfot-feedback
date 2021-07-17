@@ -14,7 +14,7 @@ class Subject extends Model
         return $this->hasMany('App\Chapters','FK_idSubject','id');
     }
     public function students() {
-        return $this->belongsToMany('App\User')->using('App\SubjectUser');
+        return $this->belongsToMany('App\User')->withPivot('id');
 
     }
 

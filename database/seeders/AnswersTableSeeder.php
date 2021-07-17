@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Answer;
 use App\Chapters;
 use App\Question;
@@ -23,40 +24,40 @@ class AnswersTableSeeder extends Seeder
         Answer::truncate();
         $faker = \Faker\Factory::create();
         // Obtenemos todos los question de la bdd
-        $users = User::all();
+        $users = User::where('role', 'ROLE_STUDENT')->get();
         foreach ($users as $user) {         // iniciamos sesión con este usuario
-                     JWTAuth::attempt(['email' => $user->email, 'password' => '123123']);
+            JWTAuth::attempt(['email' => $user->email, 'password' => '123123']);
 
             $question = Question::all();
             // Obtenemos todos los chapters de la bdd
-            $chapter = Chapters::all();
-            $subject_users= SubjectUser::all();
-
-            foreach($subject_users as $subject_user){
-            foreach($chapter as $chapters){
-                foreach ($question as $questions) {
-                    $num_answere = 5;
-                    for ($j = 0; $j < $num_answere; $j++) {
-                        Answer::create([
-
-                            'FK_idUser' => $faker->uuid,
-                            'FK_idChapter' => $chapters->id,
-                            'FK_idQuestion' => $questions->id,
-                            'user_subject_id' => $subject_user->id,
-                            'Value' => $faker->numberBetween(1,5)
+            $subject_users = SubjectUser::where('user_id', $user->id)->get();
 
 
-                        ]);
+            foreach ($subject_users as $subject_user) {
+                $chapters = $subject_user->subject->chapters;
+                foreach ($chapters as $chapter) {
+                    foreach ($question as $questions) {
+//                        $num_answere = 5;
+//                        for ($j = 0; $j < $num_answere; $j++) {
+                            Answer::create([
+                                'FK_idUser' => $user->id,
+                                'FK_idChapter' => $chapter->id,
+                                'FK_idQuestion' => $questions->id,
+                                'subject_user_id' => $subject_user->id,
+                                'Value' => $faker->numberBetween(1, 5)
+
+
+                            ]);
+//                        }
                     }
                 }
             }
         }
-        }
 
 
 
 
-       /* $question = App\Question::all();
+        /* $question = App\Question::all();
         // Obtenemos todos los chapters de la bdd
         $chapter = App\Chapters::all();
         foreach($chapter as $chapters){
@@ -72,4 +73,3 @@ class AnswersTableSeeder extends Seeder
             }*/
     }
 }
-

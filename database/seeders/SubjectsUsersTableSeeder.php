@@ -1,7 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use App\Subject;
 use App\SubjectUser;
+use App\User;
 use Illuminate\Database\Seeder;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -18,12 +20,17 @@ class SubjectsUsersTableSeeder extends Seeder
              SubjectUser::truncate();
         $faker = \Faker\Factory::create();
 
+        $users = User::all();
 
-        for ($i = 0; $i < 50; $i++) {
-            SubjectUser::create([
-                'subject_id' =>($i),
-                'user_id' =>($i),
-            ]);
+        foreach ($users as $user) {
+            $num_subjects = $faker->randomNumber([1,8], true);
+
+            for($i = 0; $i < $num_subjects; $i++) {
+                SubjectUser::create([
+                    'subject_id' => $faker->randomNumber([2, 49], true),
+                    'user_id' => $user->id,
+                ]);
+            }
         }
 
 
